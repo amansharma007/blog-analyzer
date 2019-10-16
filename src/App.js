@@ -4,7 +4,7 @@ import { Layout, Menu, Icon } from 'antd';
 import ArticleLinks from './components/ArticleLinks';
 import axios from 'axios';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider } = Layout;
 
 class App extends Component {
   state = {
@@ -25,11 +25,13 @@ class App extends Component {
   getArticles = async (url) => {
     this.setState({isLoading: true});
 
-    let response = await axios.get(`http://localhost:3010/get-blog-list?url=${url}`)
-    .then((res) => res.data)
+    await axios.get(`https://blog-analyzer-api.herokuapp.com/get-blog-list?url=${url}`)
+    .then((res) => {
+      this.setState({isLoading: false, articlesData: res.data});
+    })
     .catch((err) => console.log("We have an error", err))
 
-    this.setState({isLoading: false, articlesData: response});
+    
   }
 
   render() {
