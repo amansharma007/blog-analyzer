@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check out the [Live Demo](https://blog-analyzer-app.herokuapp.com).
 
 ## Available Scripts
 
